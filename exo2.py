@@ -1,5 +1,6 @@
 spaceships = [{}, {}, {}]
 
+spaceshipWithMaxRatio = spaceships[0]
 
 for spaceship in spaceships:
     spaceship['color'] = input('color: ')
@@ -8,9 +9,6 @@ for spaceship in spaceships:
     spaceship['name'] = input('name')
     spaceship['ratio_passenger_seat'] = spaceship['nb_passengers'] / spaceship['nb_seats']
 
-spaceshipWithMaxRatio = spaceships[0]
-
-for spaceship in spaceships[1:]:
     if spaceshipWithMaxRatio['ratio_passenger_seat'] < spaceship['ratio_passenger_seat']:
         spaceshipWithMaxRatio = spaceship
 
