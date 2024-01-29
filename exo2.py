@@ -1,4 +1,3 @@
-spaceshipWithMaxRatio = spaceships[0]
 
 spaceships = [{
         'color': input('color: '),
@@ -7,8 +6,15 @@ spaceships = [{
         'name': input('name'),
     } for _ in range(3)]
 
+spaceshipWithMaxRatio = spaceships[0]
+
+
 for idx in range(3):
+    # exploded
+    spaceship = spaceships[idx]
     spaceship['ratio_passenger_seat'] = spaceship['nb_passengers'] / spaceship['nb_seats']
+    # condensed
+    spaceships[idx]['ratio_passenger_seat'] = spaceships[idx]['nb_passengers'] / spaceships[idx]['nb_seats']
 
     # est-ce que le nouveau vaisseau est plus rempli que les autres déjà créés
     if spaceshipWithMaxRatio['ratio_passenger_seat'] < spaceship['ratio_passenger_seat']:
