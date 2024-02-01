@@ -37,31 +37,40 @@ class Hangar:
             )
     
     def ajouter_depuis_fichier(self):
-        pass
         # identifier le fichier à lire
+        spaceships = 'spaceships.csv'
         # ouvrir le fichier en lecture
+        with open(spaceships, 'r') as spaceships_file:
+            for row_number, line in enumerate(spaceships_file.readlines()):
+                if row_number > 0 and row_number < 4:
+                    features = line.split(',') # un tableau de 4 éléments
+                    self.spaceships.append(
+                        Spaceship(
+                            features[0],
+                            int(features[1]),
+                            int(features[2]),
+                            features[3],
+                        ) 
+                    )
         # lire ligne à ligne
         # chaque ligne contient des caractéristiques d'un unique vaisseau séparées par des virgules
         # créer le vaisseau correspondant à la ligne
         # l'ajouter à la liste
 
-# utiliser la classe à la place du dictionnaire pour chaque élément de la liste
-
-spaceships = [ Spaceship(
-                    input('color: '),
-                    int(input('passengers: ')),
-                    int(input('seats: ')),
-                    input('name: '),
-            ) for _ in range(3) ]
-
-
-spaceshipWithMaxRatio = max(spaceships, key=lambda spaceship: spaceship.ratio)
-
-
-print(f'max ratio: {spaceshipWithMaxRatio.name}')
 
 # == Résultat attendu ==
 # Instanciation de la classe Hangar
 # TODO: comment créer ce Hangar
 # Ajout des vaisseaux dans le hangar
-# Affichage du vaisseau ayant le plus
+# Affichage du vaisseau ayant le taux de remplissable le plus grand
+
+hangar = Hangar()
+
+# TODO pour ajouter des vaisseaux depuis le fichier
+
+# modifier la liste sur laquelle porte le max
+spaceshipWithMaxRatio = max(spaceships, key=lambda spaceship: spaceship.ratio)
+
+
+print(f'max ratio: {spaceshipWithMaxRatio.name}')
+
