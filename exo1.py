@@ -4,4 +4,10 @@ lifePoints = input('Nb de points de vie: ')
 
 hits = input('Nb dégâts: ')
 
-print('Nb de points de vie :', int(lifePoints) - int(hits))
+remainingLife = int(lifePoints) - int(hits)
+
+print('Nb de points de vie :', remainingLife)
+
+print('Nb de points de vie :' + str(remainingLife))
+
+print(f'Nb de points de vie : {remainingLife}')
