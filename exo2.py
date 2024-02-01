@@ -31,6 +31,17 @@ spaceships = [ Spaceship(
 
 # modifier le code pour interroger les attributs correspondants
 
-spaceshipWithMaxRatio = max(spaceships, key=lambda spaceship: spaceship.nb_passengers / spaceship.nb_seats)
+# spaceshipWithMaxRatio = max(spaceships, key=lambda spaceship: spaceship.nb_passengers / spaceship.nb_seats)
+
+def getRatio(spaceship):
+    return spaceship.nb_passengers / spaceship.nb_seats
+
+spaceshipWithMaxRatio = max(spaceships, key=getRatio)
+
 
 print(f'max ratio: {spaceshipWithMaxRatio.name}')
+
+# == Résultat attendu ==
+# Instanciation de la classe Hangar
+# Ajout des vaisseaux dans le hangar
+# Affichage du vaisseau ayant le plus
