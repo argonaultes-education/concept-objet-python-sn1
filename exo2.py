@@ -22,12 +22,12 @@ class Spaceship:
 class Hangar:
 
     def __init__(self):
-        self.spaceships = [] #TODO v2: remplacer l'initialisation à liste vide par directement l'initialisation complète de la liste
+        self.__spaceships = [] #TODO v2: remplacer l'initialisation à liste vide par directement l'initialisation complète de la liste
     
     # TODO v1 créer une nouvelle méthode d'instance pour ajouter tous les vaisseaux
     def ajouter_tous_les_vaisseaux(self):
         for _ in range(3): # TODO: taille constante de 3, comment la rendre personnalisable au moment de la création du hangar
-            self.spaceships.append(
+            self.__spaceships.append(
                 Spaceship(
                     input('color: '),
                     int(input('passengers: ')),
@@ -37,14 +37,12 @@ class Hangar:
             )
     
     def ajouter_depuis_fichier(self):
-        # identifier le fichier à lire
         spaceships = 'spaceships.csv'
-        # ouvrir le fichier en lecture
         with open(spaceships, 'r') as spaceships_file:
             for row_number, line in enumerate(spaceships_file.readlines()):
                 if row_number > 0 and row_number < 4:
                     features = line.split(',') # un tableau de 4 éléments
-                    self.spaceships.append(
+                    self.__spaceships.append(
                         Spaceship(
                             features[0],
                             int(features[1]),
@@ -52,25 +50,16 @@ class Hangar:
                             features[3],
                         ) 
                     )
-        # lire ligne à ligne
-        # chaque ligne contient des caractéristiques d'un unique vaisseau séparées par des virgules
-        # créer le vaisseau correspondant à la ligne
-        # l'ajouter à la liste
+
+    def get_spaceship_with_max_ratio(self):
+        return max(self.__spaceships, key=lambda spaceship: spaceship.ratio)
 
 
-# == Résultat attendu ==
-# Instanciation de la classe Hangar
-# TODO: comment créer ce Hangar
-# Ajout des vaisseaux dans le hangar
-# Affichage du vaisseau ayant le taux de remplissable le plus grand
+hangar = Hangar() #TODO: comment obtenir un hangar dont la taille est personnalisee a l'initialisation
 
-hangar = Hangar()
+hangar.ajouter_depuis_fichier()
 
-# TODO pour ajouter des vaisseaux depuis le fichier
+spaceshipWithMaxRatio = hangar.get_spaceship_with_max_ratio()
 
-# modifier la liste sur laquelle porte le max
-spaceshipWithMaxRatio = max(spaceships, key=lambda spaceship: spaceship.ratio)
-
-
-print(f'max ratio: {spaceshipWithMaxRatio.name}')
+print(f'max ratio: {spaceshipWithMaxRatio.name} with {spaceshipWithMaxRatio.ratio}')
 
