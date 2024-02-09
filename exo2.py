@@ -27,7 +27,7 @@ class Spaceship:
     def __repr__(self):
         return f'Vaisseau [{self.__name}] ({self.ratio})'
 
-# Herite de Spaceshipe
+# Herite de Spaceship
 class SpaceshipCargo(Spaceship):
     
     def __init__(self, color, nb_passengers, nb_seats, name, nb_containers, quantity_fret):
@@ -42,7 +42,7 @@ class SpaceshipCargo(Spaceship):
     def __repr__(self):
         return f'Vaisseau [{self.name}] ({self.ratio}) ({self.average_quantity_container})'
 
-# Herite de Spaceshipe
+# Herite de Spaceship
 class SpaceshipRacer(Spaceship):
 
     def __init__(self, color, nb_passengers, nb_seats, name, turbo):
