@@ -26,8 +26,14 @@ class Ecole:
     def __str__(self):
         return f'Nom: {self.__nom}'
 
-cetd = Groupe('cetd')
-epsi = Ecole(cetd, 'epsi')
-epsi.ajout_classe(Classe(epsi, 'sn1-gr1'))
-epsi.ajout_classe(Classe(epsi, 'sn1-gr1'))
-epsi.afficher_classes()
+if __name__ == '__main__':
+    cetd = Groupe('cetd')
+    epsi = Ecole(cetd, 'epsi')
+
+    sn1gr1v0 = Classe(epsi, 'sn1-gr1')
+    sn1gr1v1 = Classe(epsi, 'sn1-gr1')
+
+    epsi.ajout_classe(sn1gr1v0)
+    epsi.ajout_classe(sn1gr1v0) # ignore silencieusement l'ajout
+    epsi.ajout_classe(sn1gr1v1)
+    epsi.afficher_classes()

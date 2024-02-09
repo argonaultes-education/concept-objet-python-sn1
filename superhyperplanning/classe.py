@@ -4,8 +4,11 @@ class Classe:
         self.__ecole = ecole
         self.__nom = nom
 
-    # def __eq__(self, other):
-    #     pass
+    def __eq__(self, other):
+        return self.__nom == other.__nom
+
+    def __hash__(self):
+        return hash(self.__nom)
 
     def __str__(self):
         return f'Classe: {self.__nom}'
